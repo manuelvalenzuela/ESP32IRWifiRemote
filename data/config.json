@@ -1,0 +1,12 @@
+{
+    "mode":"hotspot",
+    "deviceName":"myname",
+    "hotspot":{
+        "ssid":"esp32_hotspot",
+        "password":"12345678"
+    },
+    "router":{
+        "ssid":"",
+        "password":""
+    }
+}
