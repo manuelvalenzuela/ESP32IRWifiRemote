@@ -1,5 +1,6 @@
 #include <LittleFS.h>
 #include <ArduinoJson.h>
+#include "RemoteHotspot.cpp"
 
 DynamicJsonDocument doc(200);
 
@@ -40,7 +41,6 @@ void setup() {
   }
 
   Serial.println("LittleFS Mount successful");
-  Serial.println("-.-");
   Config configuration = readConfig(LittleFS);
 
   Serial.printf("mode=%s\n", configuration.deviceMode);
@@ -49,12 +49,14 @@ void setup() {
 
   LittleFS.end();
 
-
   // look at the mode and decide what to do
   // if is hotspot then create the hotspot
   // create web to configure the router
   // else connect to router
   
+  //Added this temporarily in order to develop hotspot to configure local router connection
+  RemoteHotspot hotspot = RemoteHotspot(configuration.ssid, configuration.password);
+  hotspot.StartServer();
 }
 
 void loop() {
